@@ -111,62 +111,100 @@ class ViewController: UIViewController
             }
             
             
-            //no error
-            if error == nil
+            /* GUARD: Was there an error? */
+            guard (error == nil)
+                else
             {
-                if let data = data
+                displayError("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299
+                else
+            {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data
+                else
+            {
+                displayError("No data was returned by the request!")
+                return
+            }
+            
+            // parse the data
+            let parsedResult: [String:AnyObject]!
+            do
+            {
+                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
+            }
+            catch
+            {
+                displayError("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            /* GUARD: Did Flickr return an error (stat != ok)? */
+            guard let stat = parsedResult[Constants.FlickrResponseKeys.Status] as? String, stat == Constants.FlickrResponseValues.OKStatus
+                else
+            {
+                displayError("Flickr API returned an error. See error code and message in \(parsedResult)")
+                return
+            }
+            
+            /* GUARD: Are the "photos" and "photo" keys in our result? */
+            guard let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]]
+                else
+            {
+                displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photos)' and '\(Constants.FlickrResponseKeys.Photo)' in \(parsedResult)")
+                return
+            }
+            
+            // select a random photo
+            let randomPhotoIndex = Int(arc4random_uniform(UInt32(photoArray.count)))
+            let photoDictionary = photoArray[randomPhotoIndex] as [String:AnyObject]
+            let photoTitle = photoDictionary[Constants.FlickrResponseKeys.Title] as? String
+            
+            /* GUARD: Does our photo have a key for 'url_m'? */
+            guard let imageUrlString = photoDictionary[Constants.FlickrResponseKeys.MediumURL] as? String
+                else
+            {
+                displayError("Cannot find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photoDictionary)")
+                return
+            }
+            
+            // if an image exists at the url, set the image and title
+            let imageURL = URL(string: imageUrlString)
+            if let imageData = try? Data(contentsOf: imageURL!)
+            {
+                performUIUpdatesOnMain
                 {
+                    self.setUIEnabled(true)
                     
-                    //get parsed JSON data
-                    let parsedResult: [String:AnyObject]!
-                    do
-                    {
-                        parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
-                    }
-                    catch
-                    {
-                        displayError("Could not parse the data as JSON: '\(data)'")
-                        return
-                    }
+                    self.imgView.image = UIImage(data: imageData)
                     
-                    
-                    //get images from gallery id
-                    if let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]]
-                    {
-                        
-                        let randomPhotoIndex = Int(arc4random_uniform(UInt32(photoArray.count)))
-                        let photoDictionary = photoArray[randomPhotoIndex] as [String:AnyObject]
-                        
-                        //get url of random image
-                        if let imageUrlString = photoDictionary[Constants.FlickrResponseKeys.MediumURL] as? String, let photoTitle = photoDictionary[Constants.FlickrResponseKeys.Title] as? String
+                    //animate alpha of image; fade out
+                    UIView.animate(withDuration: 0.4, animations:
                         {
-                            let imageURL = URL(string: imageUrlString)
-                            if let imageData = try? Data(contentsOf: imageURL!)
-                            {
-                                performUIUpdatesOnMain
-                                {
-                                    
-                                    //animate alpha of image; fade in
-                                
-                                    self.imgView.image = UIImage(data: imageData)
-                                    
-                                    UIView.animate(withDuration: 0.4, animations:
-                                        {
-                                            self.imgView.alpha = 1
-                                            self.actInd.stopAnimating()
-                                            self.grabBtn.shake()
-                                    })
-                                    
-                                    self.titleLabel.text = photoTitle
-                                    self.setUIEnabled(true)
-                                }
-                            }
-                        } 
-                    }
+                            self.imgView.alpha = 1
+                    })
+                    
+                    self.actInd.stopAnimating()
+                    self.grabBtn.shake()
+                    
+                    self.titleLabel.text = photoTitle ?? "(Untitled)"
                 }
+            }
+            else
+            {
+                displayError("Image does not exist at \(imageURL)")
             }
         }
         
+        // start the task!
         task.resume()
     }
 

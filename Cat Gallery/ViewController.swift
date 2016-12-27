@@ -40,9 +40,9 @@ class ViewController: UIViewController
         self.actInd.stopAnimating()
         
         self.titleLabel.layer.masksToBounds = true
-        self.titleLabel.layer.cornerRadius = 5
+        self.titleLabel.layer.cornerRadius = 10
         
-        self.grabView.layer.cornerRadius = 5
+        self.grabView.layer.cornerRadius = 10
         self.grabBtn.shake()
     }
     

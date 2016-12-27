@@ -30,28 +30,28 @@
                                 <color key="color" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTF-kJ-o2C">
-                                <rect key="frame" x="13.5" y="41" width="348" height="29"/>
+                                <rect key="frame" x="0.0" y="20" width="376" height="58"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="0iP-3W-PYZ"/>
-                                    <constraint firstAttribute="width" constant="348" id="64C-Ep-NAO"/>
+                                    <constraint firstAttribute="height" constant="58" id="0iP-3W-PYZ"/>
+                                    <constraint firstAttribute="width" constant="376" id="64C-Ep-NAO"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Cats!">
                                         <attributes>
-                                            <color key="NSColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="28" name="AvenirNext-DemiBold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="Orig" translatesAutoresizingMaskIntoConstraints="NO" id="zdz-rV-Ark">
-                                <rect key="frame" x="13.5" y="78" width="348" height="386"/>
+                                <rect key="frame" x="0.0" y="78" width="375" height="386"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="386" id="A9y-It-VwR"/>
-                                    <constraint firstAttribute="width" constant="348" id="gPR-Vl-vM2"/>
+                                    <constraint firstAttribute="width" constant="375" id="gPR-Vl-vM2"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAe-yn-gye">
@@ -99,8 +99,8 @@
                             <constraint firstItem="dAe-yn-gye" firstAttribute="top" secondItem="zdz-rV-Ark" secondAttribute="bottom" constant="13" id="IIE-7F-Vvo"/>
                             <constraint firstItem="QTF-kJ-o2C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Odi-qB-AdN"/>
                             <constraint firstItem="p6S-FW-Jnb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="233" id="Z0y-3Y-3N7"/>
-                            <constraint firstItem="zdz-rV-Ark" firstAttribute="top" secondItem="QTF-kJ-o2C" secondAttribute="bottom" constant="8" id="drx-3Y-v7L"/>
-                            <constraint firstItem="QTF-kJ-o2C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="21" id="hJ5-e7-yx2"/>
+                            <constraint firstItem="zdz-rV-Ark" firstAttribute="top" secondItem="QTF-kJ-o2C" secondAttribute="bottom" id="drx-3Y-v7L"/>
+                            <constraint firstItem="QTF-kJ-o2C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hJ5-e7-yx2"/>
                             <constraint firstItem="dAe-yn-gye" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jvd-w6-hVi"/>
                             <constraint firstItem="zdz-rV-Ark" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lLC-gn-b5M"/>
                             <constraint firstItem="J0m-Ko-T2u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mH7-Hf-CfV"/>

@@ -12,6 +12,8 @@
 		283B74A11DF8A88900E07A9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 283B749F1DF8A88900E07A9C /* Main.storyboard */; };
 		283B74A31DF8A88A00E07A9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 283B74A21DF8A88A00E07A9C /* Assets.xcassets */; };
 		283B74A61DF8A88A00E07A9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 283B74A41DF8A88A00E07A9C /* LaunchScreen.storyboard */; };
+		283B74AE1DF8AF5300E07A9C /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B74AD1DF8AF5300E07A9C /* GCDBlackBox.swift */; };
+		283B74B01DF8AFC500E07A9C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B74AF1DF8AFC500E07A9C /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		283B74A21DF8A88A00E07A9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		283B74A51DF8A88A00E07A9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		283B74A71DF8A88A00E07A9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		283B74AD1DF8AF5300E07A9C /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		283B74AF1DF8AFC500E07A9C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				283B749B1DF8A88900E07A9C /* AppDelegate.swift */,
 				283B749D1DF8A88900E07A9C /* ViewController.swift */,
+				283B74AF1DF8AFC500E07A9C /* Constants.swift */,
+				283B74AD1DF8AF5300E07A9C /* GCDBlackBox.swift */,
 				283B749F1DF8A88900E07A9C /* Main.storyboard */,
 				283B74A21DF8A88A00E07A9C /* Assets.xcassets */,
 				283B74A41DF8A88A00E07A9C /* LaunchScreen.storyboard */,
@@ -96,6 +102,7 @@
 				TargetAttributes = {
 					283B74971DF8A88900E07A9C = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = E55B666VZ8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				283B749E1DF8A88900E07A9C /* ViewController.swift in Sources */,
+				283B74AE1DF8AF5300E07A9C /* GCDBlackBox.swift in Sources */,
 				283B749C1DF8A88900E07A9C /* AppDelegate.swift in Sources */,
+				283B74B01DF8AFC500E07A9C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E55B666VZ8;
 				INFOPLIST_FILE = "Cat Gallery/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SHurtado91112.Cat-Gallery";
@@ -270,6 +280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E55B666VZ8;
 				INFOPLIST_FILE = "Cat Gallery/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SHurtado91112.Cat-Gallery";

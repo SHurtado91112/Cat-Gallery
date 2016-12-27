@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cat_Gallery" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,74 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cats!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTF-kJ-o2C">
+                                <rect key="frame" x="13.5" y="41" width="348" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="0iP-3W-PYZ"/>
+                                    <constraint firstAttribute="width" constant="348" id="64C-Ep-NAO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAe-yn-gye">
+                                <rect key="frame" x="67" y="477" width="240" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="nlz-he-w6u"/>
+                                    <constraint firstAttribute="width" constant="240" id="vz6-V3-rcv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oU6-T0-vMS">
+                                <rect key="frame" x="154" y="531" width="67" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="IM2-TI-aTg"/>
+                                    <constraint firstAttribute="width" constant="67" id="mbw-iI-h3o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="New" backgroundImage="Invert">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="grabImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X7g-1Z-LE0"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="Orig" translatesAutoresizingMaskIntoConstraints="NO" id="zdz-rV-Ark">
+                                <rect key="frame" x="13.5" y="78" width="348" height="386"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="386" id="A9y-It-VwR"/>
+                                    <constraint firstAttribute="width" constant="348" id="gPR-Vl-vM2"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.76964234509791762" blue="0.83691531099879257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dAe-yn-gye" firstAttribute="top" secondItem="zdz-rV-Ark" secondAttribute="bottom" constant="13" id="IIE-7F-Vvo"/>
+                            <constraint firstItem="QTF-kJ-o2C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Odi-qB-AdN"/>
+                            <constraint firstItem="zdz-rV-Ark" firstAttribute="top" secondItem="QTF-kJ-o2C" secondAttribute="bottom" constant="8" id="drx-3Y-v7L"/>
+                            <constraint firstItem="QTF-kJ-o2C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="21" id="hJ5-e7-yx2"/>
+                            <constraint firstItem="dAe-yn-gye" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jvd-w6-hVi"/>
+                            <constraint firstItem="zdz-rV-Ark" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lLC-gn-b5M"/>
+                            <constraint firstItem="oU6-T0-vMS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mkp-Se-dAO"/>
+                            <constraint firstItem="oU6-T0-vMS" firstAttribute="top" secondItem="dAe-yn-gye" secondAttribute="bottom" constant="8" id="wfi-mO-gL8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="grabBtn" destination="oU6-T0-vMS" id="uS1-Qh-Rfr"/>
+                        <outlet property="imgView" destination="zdz-rV-Ark" id="Lli-Ce-6Z5"/>
+                        <outlet property="titleLabel" destination="dAe-yn-gye" id="yKo-2L-8z4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Invert" width="194" height="194"/>
+        <image name="Orig" width="194" height="194"/>
+    </resources>
 </document>

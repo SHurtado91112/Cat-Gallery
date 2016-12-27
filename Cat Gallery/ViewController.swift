@@ -8,18 +8,42 @@
 
 import UIKit
 
+extension UIView
+{
+    func shake()
+    {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = 0.6
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+        layer.add(animation, forKey: "shake")
+    }
+}
+
 class ViewController: UIViewController
 {
+    
+    @IBOutlet weak var actInd: UIActivityIndicatorView!
 
     @IBOutlet weak var imgView: UIImageView!
     
+    @IBOutlet weak var catLabel: UILabel!
+    
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var grabView: UIView!
     @IBOutlet weak var grabBtn: UIButton!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.actInd.stopAnimating()
+        
+        self.titleLabel.layer.masksToBounds = true
+        self.titleLabel.layer.cornerRadius = 5
+        
+        self.grabView.layer.cornerRadius = 5
+        self.grabBtn.shake()
     }
     
     @IBAction func grabImage(_ sender: Any)
@@ -31,6 +55,8 @@ class ViewController: UIViewController
             {
                 self.imgView.alpha = 0
         })
+        
+        self.actInd.startAnimating()
         
         getImageFromFlickr()
     }
@@ -127,6 +153,8 @@ class ViewController: UIViewController
                                     UIView.animate(withDuration: 0.4, animations:
                                         {
                                             self.imgView.alpha = 1
+                                            self.actInd.stopAnimating()
+                                            self.grabBtn.shake()
                                     })
                                     
                                     self.titleLabel.text = photoTitle

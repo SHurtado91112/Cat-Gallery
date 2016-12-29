@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 extension UIView
 {
@@ -34,6 +35,8 @@ class ViewController: UIViewController
     @IBOutlet weak var grabView: UIView!
     @IBOutlet weak var grabBtn: UIButton!
     
+    var errImgView : UIImageView!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -44,6 +47,12 @@ class ViewController: UIViewController
         
         self.grabView.layer.cornerRadius = 10
         self.grabBtn.shake()
+        
+        //error image load
+        errImgView = UIImageView(frame: CGRect(origin: self.imgView.frame.origin, size: CGSize(width: 194.0, height: 194.0)))
+        errImgView.image = UIImage(named: "SadOrig")
+        errImgView.center = self.imgView.center
+        errImgView.alpha = 0
     }
     
     @IBAction func grabImage(_ sender: Any)
@@ -52,9 +61,17 @@ class ViewController: UIViewController
         
         //animate alpha of image; fade out
         UIView.animate(withDuration: 0.4, animations:
-            {
+        {
                 self.imgView.alpha = 0
         })
+        
+        if(self.errImgView.alpha == 1)
+        {
+            UIView.animate(withDuration: 0.4, animations:
+            {
+                    self.errImgView.alpha = 0
+            })
+        }
         
         self.actInd.startAnimating()
         
@@ -80,7 +97,8 @@ class ViewController: UIViewController
     
     private func getImageFromFlickr()
     {
-        
+        self.imgView.contentMode = .scaleToFill
+
         let methodParameters =
         [
             Constants.FlickrParameterKeys.Method: Constants.FlickrParameterValues.GalleryPhotosMethod,
@@ -116,6 +134,29 @@ class ViewController: UIViewController
                 else
             {
                 displayError("There was an error with your request: \(error)")
+                
+                self.actInd.stopAnimating()
+                self.grabBtn.shake()
+                self.imgView.contentMode = .scaleAspectFit
+                
+                self.view.addSubview(self.errImgView);
+
+                //animate alpha of image; fade out
+                UIView.animate(withDuration: 0.4, animations:
+                {
+                        self.errImgView.alpha = 1
+                })
+                
+                //check if error is from no internet connection
+                if let error = error as? NSError, error.domain == NSURLErrorDomain && error.code == NSURLErrorNotConnectedToInternet
+                {
+                    self.titleLabel.text = "Error: Connection offline!"
+                }
+                else
+                {
+                    self.titleLabel.text = "Error: Unknown Error"
+                }
+                
                 return
             }
             
